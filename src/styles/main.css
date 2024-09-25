@@ -1,0 +1,981 @@
+@charset "UTF-8";
+/***
+    The new CSS reset - version 1.8.5 (last updated 14.6.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+    - The "html" attribute is exclud, because otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  -moz-appearance: revert;
+       appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+  all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::-moz-placeholder {
+  color: unset;
+}
+::placeholder {
+  color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+  content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+  all: revert;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "Roboto-Light";
+  src: url(../fonts/Roboto/Roboto-Light.ttf);
+}
+.container-global {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 700px;
+  background-image: url(../images/Background-header.png);
+}
+.header__heading-box {
+  width: 470px;
+  height: 126px;
+  margin: 145px auto 0;
+}
+.header__heading {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 63px;
+  text-align: center;
+}
+.header__text-box {
+  width: 396px;
+  height: 25px;
+  margin: 28px auto 0;
+}
+.header__text {
+  color: rgb(247, 243, 242);
+  font-family: "Roboto-Light";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 24.5px;
+  text-align: center;
+}
+.header__buttons-box {
+  width: 225px;
+  height: 40px;
+  border-radius: 40px;
+  background: rgb(255, 78, 80);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 34px auto 0;
+  transition: all 0.4s;
+}
+.header__buttons-box:hover {
+  background: rgb(168, 52, 54);
+}
+.header__buttons-text {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+}
+
+.container {
+  width: 943px;
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 37px;
+}
+.navbar__logo {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  align-self: center;
+}
+.navbar__buttons-block {
+  width: 154px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 40px;
+}
+.navbar__buttons-link {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  transition: 0.4s all;
+}
+.navbar__buttons {
+  align-self: center;
+}
+.navbar__buttons-border {
+  padding: 10px 18px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 40px;
+  transition: 0.4s all;
+}
+.navbar__buttons-border:hover {
+  background-color: white;
+}
+.navbar__buttons-border:hover .navbar__buttons-link_active {
+  color: gray;
+}
+.navbar__buttons-link:hover {
+  color: gray;
+}
+
+.heading {
+  color: rgb(68, 68, 68);
+  font-family: "Montserrat";
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: center;
+}
+
+.heading_margin-dream {
+  margin-top: 89px;
+}
+
+.dreamshare__step-box {
+  border-radius: 40px;
+  background: rgb(255, 78, 80);
+  width: 70px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dreamshare__step {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 2px;
+}
+.dreamshare__heading {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 26px;
+  margin-top: 22px;
+}
+.dreamshare__text {
+  color: rgb(227, 227, 227);
+  font-family: "Roboto-Light";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 14px;
+}
+.dreamshare__text_st1 {
+  margin-top: 24px;
+}
+.dreamshare__text_st2 {
+  margin-top: 19px;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block_margin-dream {
+  margin-top: 35px;
+}
+
+.box-dreamshare {
+  width: 300px;
+  height: 400px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 25px;
+}
+
+.box-dreamshare_1 {
+  background-image: url(../images/Step1.png);
+}
+
+.box-dreamshare_2 {
+  background-image: url(../images/Step2.png);
+}
+
+.box-dreamshare_3 {
+  background-image: url(../images/Step3.png);
+}
+
+.heading_margin-parthner {
+  margin-top: 89px;
+}
+
+.box-persons {
+  width: 221px;
+}
+
+.block_margin-parthner {
+  margin-top: 34px;
+}
+
+.parthner__img-box {
+  display: flex;
+  justify-content: center;
+}
+.parthner__name-person {
+  color: rgb(68, 68, 68);
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin-top: 18px;
+}
+.parthner__text-person {
+  color: rgb(102, 102, 102);
+  font-family: "Roboto-Light";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin-top: 24px;
+}
+.parthner__button {
+  width: 180px;
+  height: 40px;
+  border: 2px solid rgb(255, 78, 80);
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  transition: all 0.4s;
+}
+.parthner__button:hover {
+  background-color: rgb(255, 78, 80);
+}
+.parthner__button:hover .parthner__button-link {
+  color: rgb(255, 255, 255);
+}
+.parthner__button-link {
+  color: rgb(255, 78, 80);
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0px;
+  transition: all 0.4s;
+}
+
+.heading_margin-holiday {
+  margin-top: 88px;
+}
+
+.bg-fon {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.holiday__block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+.holiday__box {
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.holiday__box-text-we {
+  width: 190px;
+  text-align: center;
+}
+.holiday__box-text {
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0px;
+}
+.holiday__box-sports {
+  width: 300px;
+  height: 310px;
+  background-image: url(../images/sports.png);
+}
+.holiday__box-health {
+  width: 300px;
+  height: 310px;
+  background-image: url(../images/health.png);
+}
+.holiday__box-extreme {
+  width: 300px;
+  height: 310px;
+  background-image: url(../images/extreme.png);
+}
+.holiday__box-games {
+  width: 300px;
+  height: 310px;
+  background-image: url(../images/games.png);
+}
+.holiday__box-culture {
+  width: 620px;
+  height: 310px;
+  background-image: url(../images/culture.png);
+}
+.holiday__box-relaxation {
+  width: 620px;
+  height: 310px;
+  background-image: url(../images/relaxation.png);
+}
+.holiday__box-trevelling {
+  width: 300px;
+  height: 310px;
+  background-image: url(../images/trevelling.png);
+}
+
+.register__text {
+  color: rgb(102, 102, 102);
+  font-family: "Roboto-Light";
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin-top: 53px;
+}
+
+.form-box {
+  margin: 24px auto 0;
+  width: 482px;
+}
+
+.search-form {
+  width: 299px;
+  height: 40px;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.07);
+  background: rgb(255, 255, 255);
+  margin-right: 6px;
+}
+
+.search-form::-moz-placeholder {
+  color: rgb(153, 153, 153);
+  font-family: "Roboto-Light";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 0px;
+  padding-left: 10px;
+}
+
+.search-form::placeholder {
+  color: rgb(153, 153, 153);
+  font-family: "Roboto-Light";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 0px;
+  padding-left: 10px;
+}
+
+.button-form {
+  width: 172.13px;
+  height: 40px;
+  border-radius: 40px;
+  background: rgb(255, 78, 80);
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  text-align: center;
+}
+
+.heading_margin-register {
+  margin-top: 69px;
+}
+
+.footer {
+  border-top: 2px solid rgb(255, 78, 80);
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.footer-block {
+  display: flex;
+  margin-top: 37px;
+}
+.footer__logo {
+  color: rgb(255, 78, 80);
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+.footer__heading-box {
+  color: rgb(68, 68, 68);
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0px;
+  margin-bottom: 13px;
+}
+.footer__box-designed {
+  margin-left: auto;
+}
+.footer__box-designed-text {
+  color: rgb(204, 204, 204);
+  font-family: "Montserrat";
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  text-align: right;
+  margin-bottom: 9px;
+}
+.footer__big-box {
+  margin-left: 124px;
+}
+.footer__small-box {
+  display: flex;
+  flex-direction: column;
+}
+.footer__link {
+  color: rgb(153, 153, 153);
+  font-family: "Roboto-Light";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 26px;
+}
+
+@media screen and (max-width: 1500px) {
+  .container-global {
+    width: 768px;
+  }
+  .container {
+    width: 670px;
+  }
+  .container-main {
+    width: 750px;
+  }
+  .container-footer {
+    width: 694px;
+  }
+  .header {
+    background-image: url(../images/Background-header-tablet.png);
+  }
+  .navbar__buttons-block {
+    width: 154px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0px;
+  }
+  .heading {
+    color: rgb(68, 68, 68);
+    font-family: "Montserrat";
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 27px;
+  }
+  .heading_margin-dream {
+    margin-top: 93px;
+  }
+  .box-dreamshare {
+    width: 236px;
+    height: 400px;
+    padding: 14px 21px;
+  }
+  .dreamshare__heading {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 14px;
+    margin-top: 44px;
+  }
+  .dreamshare__heading_st2 {
+    margin-top: 16px;
+  }
+  .dreamshare__text_st1 {
+    margin-top: 30px;
+  }
+  .dreamshare__text_st2 {
+    margin-top: 24px;
+  }
+  .heading_margin-parthner {
+    margin-top: 95px;
+  }
+  .block_margin-parthner {
+    flex-direction: column;
+    height: 467px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 488px;
+    margin: 34px auto;
+  }
+  .box-persons {
+    width: 234px;
+  }
+  .holiday__block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 39px;
+  }
+  .holiday__box {
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .holiday__box-text-ww {
+    width: 206px;
+    text-align: center;
+  }
+  .holiday__box-text-ws {
+    width: 206px;
+    text-align: center;
+  }
+  .holiday__box-text-we {
+    width: 190px;
+    text-align: center;
+  }
+  .holiday__box-text {
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat";
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0px;
+  }
+  .holiday__box-sports {
+    width: 236px;
+    height: 310px;
+    background-image: url(../images/sportsm.png);
+  }
+  .holiday__box-health {
+    width: 236px;
+    height: 310px;
+    background-image: url(../images/healthm.png);
+  }
+  .holiday__box-extreme {
+    width: 236px;
+    height: 310px;
+    background-image: url(../images/extremem.png);
+  }
+  .holiday__box-games {
+    width: 236px;
+    height: 310px;
+    background-image: url(../images/gamesm.png);
+  }
+  .holiday__box-culture {
+    width: 492px;
+    height: 310px;
+    background-image: url(../images/culturem.png);
+  }
+  .holiday__box-relaxation {
+    width: 492px;
+    height: 310px;
+    background-image: url(../images/relaxationm.png);
+  }
+  .holiday__box-trevelling {
+    width: 236px;
+    height: 310px;
+    background-image: url(../images/trevellingm.png);
+  }
+  .register__text {
+    margin-top: 53px;
+  }
+  .form-box {
+    margin: 24px auto 0;
+    width: 482px;
+  }
+  .search-form {
+    margin-right: 6px;
+  }
+  .heading_margin-register {
+    margin-top: 74px;
+  }
+  .footer__big-box {
+    margin-left: 111px;
+  }
+  .footer__big-box_ml {
+    margin-left: 56px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .container-global {
+    width: 320px;
+  }
+  .container {
+    width: 300px;
+  }
+  .container-main {
+    width: 300px;
+  }
+  .header {
+    height: 540px;
+    background-image: url(../images/Background-header-mobile.png);
+  }
+  .header__heading-box {
+    width: 272px;
+    height: 74px;
+    margin: 26px auto 0;
+  }
+  .header__heading {
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat";
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 37px;
+    text-align: center;
+  }
+  .header__text-box {
+    width: 280px;
+    height: 49px;
+    margin: 6px auto 0;
+  }
+  .header__text {
+    color: rgb(247, 243, 242);
+    font-family: "Roboto-Light";
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 24.5px;
+    text-align: center;
+  }
+  .header__buttons-box {
+    width: 280px;
+    height: 40px;
+    border-radius: 40px;
+    background: rgb(255, 78, 80);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px auto 0;
+  }
+  .header__buttons-text {
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: center;
+    justify-content: space-between;
+    padding-top: 18px;
+  }
+  .navbar__logo {
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    align-self: center;
+    margin-top: 93px;
+  }
+  .navbar__buttons-block {
+    width: 154px;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    margin-right: 0;
+  }
+  .navbar__buttons-link {
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    transition: 0.4s all;
+  }
+  .navbar__buttons {
+    align-self: center;
+  }
+  .navbar__buttons-border {
+    padding: 10px 18px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 40px;
+    transition: 0.4s all;
+  }
+  .navbar__buttons-border:hover {
+    background-color: white;
+  }
+  .navbar__buttons-border:hover .navbar__buttons-link_active {
+    color: gray;
+  }
+  .navbar__buttons-link:hover {
+    color: gray;
+  }
+  .box-dreamshare {
+    width: 300px;
+    height: 240px;
+    padding: 14px 21px;
+  }
+  .block {
+    flex-direction: column;
+  }
+  .heading_margin-dream {
+    margin-top: 34px;
+  }
+  .block_margin-dream {
+    margin-top: 17px;
+  }
+  .box-dreamshare_1 {
+    background-image: url(../images/Step1m.png);
+    margin-bottom: 10px;
+  }
+  .box-dreamshare_2 {
+    background-image: url(../images/Step2m.png);
+    margin-bottom: 10px;
+  }
+  .box-dreamshare_3 {
+    background-image: url(../images/Step3m.png);
+  }
+  .heading_margin-parthner {
+    margin-top: 33px;
+  }
+  .block_margin-parthner {
+    flex-direction: column;
+    height: 100%;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 280px;
+    margin: 15px auto;
+  }
+  .box-persons {
+    width: 234px;
+  }
+  .box-persons_2 {
+    margin-top: 15px;
+  }
+  .box-persons_3 {
+    margin-top: 15px;
+  }
+  .box-persons_4 {
+    margin-top: 15px;
+  }
+  .parthner__button {
+    width: 280px;
+    height: 40px;
+    margin: 37px auto;
+  }
+  .heading_margin-holiday {
+    margin-top: -5px;
+    width: 280px;
+  }
+  .holiday__box {
+    width: 300px;
+    height: 120px;
+    margin-bottom: 10px;
+  }
+  .holiday__block {
+    margin-top: 35px;
+  }
+  .holiday__box-sports {
+    background-image: url(../images/sportss.png);
+  }
+  .holiday__box-health {
+    background-image: url(../images/healths.png);
+  }
+  .holiday__box-extreme {
+    background-image: url(../images/extremes.png);
+  }
+  .holiday__box-games {
+    background-image: url(../images/gamess.png);
+  }
+  .holiday__box-culture {
+    background-image: url(../images/cultures.png);
+  }
+  .holiday__box-relaxation {
+    background-image: url(../images/relaxations.png);
+  }
+  .holiday__box-trevelling {
+    background-image: url(../images/trevellings.png);
+  }
+  .register__text {
+    margin-top: 19px;
+    width: 307px;
+  }
+  .form-box {
+    margin: 17px auto 0;
+    width: 280px;
+  }
+  .search-form {
+    margin-right: 0;
+    width: 280px;
+    height: 40px;
+  }
+  .heading_margin-register {
+    margin-top: 24px;
+  }
+  .button-form {
+    width: 280px;
+    height: 40px;
+    margin-top: 9px;
+    text-align: center;
+  }
+  .footer {
+    border-top: 2px solid rgb(255, 78, 80);
+    margin-top: 41px;
+    margin-bottom: 30px;
+  }
+  .footer-block {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-top: 19px;
+  }
+  .footer__logo {
+    color: rgb(255, 78, 80);
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+  .footer__heading-box {
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 2px;
+  }
+  .footer__heading-box_mb {
+    margin-top: 7px;
+  }
+  .footer__box-designed {
+    margin: 10px auto 0;
+  }
+  .footer__box-designed-text {
+    color: rgb(204, 204, 204);
+    font-family: "Montserrat";
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    text-align: center;
+    margin-bottom: 9px;
+  }
+  .footer__big-box {
+    margin-left: 0px;
+    width: 188px;
+  }
+  .footer__small-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .footer__small-box_between {
+    justify-content: space-between;
+  }
+  .footer__link {
+    color: rgb(153, 153, 153);
+    font-family: "Roboto-Light";
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 26px;
+  }
+}/*# sourceMappingURL=main.css.map */

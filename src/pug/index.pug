@@ -1,0 +1,79 @@
+extends common/layout
+
+block main 
+  main.main
+    .container.container-main
+      section.dreamshare
+        p.heading.heading_margin-dream How Dreamshare works?
+        .block.block_margin-dream
+          .box-dreamshare.box-dreamshare_1
+            .dreamshare__step-box
+              p.dreamshare__step STEP 1
+            p.dreamshare__heading Sed leo enim, condimentum
+            p.dreamshare__text.dreamshare__text_st1 Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.
+          .box-dreamshare.box-dreamshare_2
+            .dreamshare__step-box
+              p.dreamshare__step STEP 2
+            p.dreamshare__heading.dreamshare__heading_st2 Morbi velit risus
+            p.dreamshare__text.dreamshare__text_st2Nulla venenatis tempor dui in molestie. Nulla quis dictum purus, sit amet porttitor est.
+          .box-dreamshare.box-dreamshare_3
+            .dreamshare__step-box
+              p.dreamshare__step STEP 3
+            p.dreamshare__heading Sed leo enim, condimentum
+            p.dreamshare__text.dreamshare__text_st1 Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.
+      section.parthner
+        p.heading.heading_margin-parthner Meet a partner for your best holiday
+        .block.block_margin-parthner
+          .box-persons
+            .parthner__img-box
+              img.parthner__img(src="./images/Avatar1.png")
+            p.parthner__name-person Bradley Hunter
+            p.parthner__text-person Based in Chicago. I love playing tennis and loud music.
+          .box-persons.box-persons_2
+            .parthner__img-box
+              img.parthner__img(src="./images/Avatar2.png")
+            p.parthner__name-person Marie Bennett
+            p.parthner__text-person Currently living in Colorado. Lover of art, languages and travelling.
+          .box-persons.box-persons_3
+            .parthner__img-box
+              img.parthner__img(src="./images/Avatar3.png")
+            p.parthner__name-person Diana Wells
+            p.parthner__text-person Living in Athens, Greece. I love black and white classics, chillout music and green tea.
+          .box-persons.box-persons_4
+            .parthner__img-box
+              img.parthner__img(src="./images/Avatar4.png" alt="")
+            p.parthner__name-person Christopher Pierce
+            p.parthner__text-person Star Wars fanatic. I have a persistent enthusiasm to create new things.
+        .parthner__button
+          a.parthner__button-link(href='#') See other partners
+      section.holiday
+        p.heading.heading_margin-holiday Discover holiday activity ideas
+        .holiday__block
+          .holiday__box.holiday__box-sports
+            .bg-fon
+              p.holiday__box-text.holiday__box-text-ws Sports and Activities
+          .holiday__box.holiday__box-health
+            .bg-fon
+              p.holiday__box-text.holiday__box-text-ww Wellness and Health
+          .holiday__box.holiday__box-extreme
+            .bg-fon
+              p.holiday__box-text.holiday__box-text-we Extreme Sports and Expeditions
+          .holiday__box.holiday__box-games
+            .bg-fon
+              p.holiday__box-text Games
+          .holiday__box.holiday__box-culture
+            .bg-fon
+              p.holiday__box-text Culture and Education
+          .holiday__box.holiday__box-relaxation
+            .bg-fon
+              p.holiday__box-text Enjoyment and Relaxation
+          .holiday__box.holiday__box-trevelling
+            .bg-fon
+              p.holiday__box-text Traveling
+      article.register
+        p.heading.heading_margin-register Crate your holiday activity
+        p.register__text Hi! What are your holiday interests?
+        .form-box
+          form
+            input.search-form(type="search", placeholder="Enter your interests")
+            button.button-form Search partners
